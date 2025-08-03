@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Entries</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-head-of-grain-robert-hamm.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #06C167; /* Title color */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .remove-entry {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Accepted Delivery Entries</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Meal Type</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Name</th>
+                    <th>Phone No</th>
+                    <th>District</th>
+                    <th>Address</th>
+                    <th>Courier Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="acceptedDeliveryEntries"></tbody>
+        </table>
+    </div>
+
+    <script>
+        function displayAcceptedDeliveryEntries() {
+            const acceptedDeliveries = JSON.parse(localStorage.getItem('acceptedDeliveryEntries')) || [];
+            const acceptedDeliveryTable = document.getElementById('acceptedDeliveryEntries');
+
+            acceptedDeliveries.forEach((entry, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${entry.foodName}</td>
+                    <td>${entry.mealType}</td>
+                    <td>${entry.category}</td>
+                    <td>${entry.quantity}</td>
+                    <td>${entry.name}</td>
+                    <td>${entry.phoneNo}</td>
+                    <td>${entry.district}</td>
+                    <td>${entry.address}</td>
+                    <td>${entry.courierName}</td>
+                    <td class="remove-entry" onclick="removeAcceptedDeliveryEntry(${index})"><i class="fas fa-trash-alt"></i></td>
+                `;
+                acceptedDeliveryTable.appendChild(row);
+            });
+        }
+
+        function removeAcceptedDeliveryEntry(index) {
+            const acceptedDeliveries = JSON.parse(localStorage.getItem('acceptedDeliveryEntries')) || [];
+            acceptedDeliveries.splice(index, 1); // Remove the entry at the specified index
+            localStorage.setItem('acceptedDeliveryEntries', JSON.stringify(acceptedDeliveries)); // Update storage
+            location.reload(); // Reload the page to reflect changes
+        }
+
+        displayAcceptedDeliveryEntries(); // Call the function to display entries
+    </script>
+</body>
+</html>

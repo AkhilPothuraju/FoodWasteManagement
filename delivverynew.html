@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Registration</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-head-of-grain-robert-hamm.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #06C167;
+        }
+        .input {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #06C167;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #05a057;
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #06C167;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #05a057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Courier Registration</h1>
+        <form id="courierRegistrationForm">
+            <div class="input">
+                <label for="courierName">Courier Name:</label>
+                <input type="text" id="courierName" name="courierName" required />
+            </div>
+            <div class="input">
+                <label for="mobileNumber">Mobile Number:</label>
+                <input type="tel" id="mobileNumber" name="mobileNumber" required />
+            </div>
+            <div class="input">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <a href="deliveryRegistration.html" class="back-button">Go Back</a>
+    </div>
+
+    <script>
+        document.getElementById('courierRegistrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const courierName = document.getElementById('courierName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const password = document.getElementById('password').value;
+
+            // You can add code here to handle the registration logic (e.g., saving data)
+
+            alert("Registration successful!");
+            // Redirect or perform further actions if necessary
+        });
+    </script>
+</body>
+</html>

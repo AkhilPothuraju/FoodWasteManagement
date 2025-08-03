@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Account Error</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-head-of-grain-robert-hamm.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: black; /* Set text color to black */
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        button {
+            background-color: #06C167;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #05a057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Account Creation</h1>
+        <p>Users can't create admin accounts.</p>
+        <button onclick="window.location.href='ca0.html'">Go Back</button>
+    </div>
+</body>
+</html>

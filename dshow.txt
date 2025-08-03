@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Donation Details</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-head-of-grain-robert-hamm.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #06C167;
+        }
+        .details {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #06C167;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #05a057;
+        }
+        .accept-order {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donation Details</h1>
+        <div class="details">
+            <p><strong>Food Name:</strong> <span id="foodnameDisplay"></span></p>
+            <p><strong>Meal Type:</strong> <span id="mealDisplay"></span></p>
+            <p><strong>Category:</strong> <span id="categoryDisplay"></span></p>
+            <p><strong>Quantity:</strong> <span id="quantityDisplay"></span></p>
+            <p><strong>Name:</strong> <span id="nameDisplay"></span></p>
+            <p><strong>Phone No:</strong> <span id="phonenoDisplay"></span></p>
+            <p><strong>District:</strong> <span id="districtDisplay"></span></p>
+            <p><strong>Address:</strong> <span id="addressDisplay"></span></p>
+        </div>
+        <button id="acceptOrderButton" class="accept-order">Accept Order</button>
+    </div>
+
+    <script>
+        const donationData = JSON.parse(localStorage.getItem('donationEntries')) || [];
+
+        if (donationData.length > 0) {
+            const lastDonation = donationData[donationData.length - 1];
+            document.getElementById('foodnameDisplay').textContent = lastDonation.foodname;
+            document.getElementById('mealDisplay').textContent = lastDonation.meal;
+            document.getElementById('categoryDisplay').textContent = lastDonation.category;
+            document.getElementById('quantityDisplay').textContent = lastDonation.quantity;
+            document.getElementById('nameDisplay').textContent = lastDonation.name;
+            document.getElementById('phonenoDisplay').textContent = lastDonation.phoneno;
+            document.getElementById('districtDisplay').textContent = lastDonation.district;
+            document.getElementById('addressDisplay').textContent = lastDonation.address;
+        } else {
+            alert("No donation data available.");
+        }
+
+        document.getElementById('acceptOrderButton').addEventListener('click', function() {
+            if (donationData.length === 0) {
+                alert("No donation to accept.");
+                return;
+            }
+
+            const acceptedDonation = donationData[donationData.length - 1];
+            const courierDetails = JSON.parse(localStorage.getItem('currentCourier')) || {};
+            
+            if (!courierDetails.courierName) {
+                alert("Courier details not found.");
+                return;
+            }
+
+            const deliveryDetails = {
+                foodName: acceptedDonation.foodname,
+                mealType: acceptedDonation.meal,
+                category: acceptedDonation.category,
+                quantity: acceptedDonation.quantity,
+                name: acceptedDonation.name,
+                phoneNo: acceptedDonation.phoneno,
+                district: acceptedDonation.district,
+                address: acceptedDonation.address,
+                courierName: courierDetails.courierName,
+            };
+
+            const acceptedDeliveries = JSON.parse(localStorage.getItem('acceptedDeliveryEntries')) || [];
+            acceptedDeliveries.push(deliveryDetails);
+            localStorage.setItem('acceptedDeliveryEntries', JSON.stringify(acceptedDeliveries));
+
+            alert("Order Accepted! Delivery details saved.");
+            window.location.href = ''; // Change to your desired page
+        });
+    </script>
+</body>
+</html>

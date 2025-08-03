@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account Options</title>
+    <link rel="stylesheet" href="loginstyle.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-head-of-grain-robert-hamm.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: #333; /* Darker text for better readability */
+        }
+        .container {
+            max-width: 500px; /* Reduced max width for a more compact design */
+            margin: auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px; /* Increased padding for a more spacious layout */
+            border-radius: 12px; /* Slightly rounded corners */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center; /* Center text for a cleaner look */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px; /* Increased font size for the heading */
+            color: #06C167; /* Accent color for the heading */
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 16px; /* Clear and legible font size */
+        }
+        .button {
+            background-color: #06C167;
+            color: white;
+            border: none;
+            padding: 15px; /* Increased padding for buttons */
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin: 10px 0; /* Spacing between buttons */
+            transition: background-color 0.3s;
+            font-weight: bold; /* Bolder text for buttons */
+        }
+        .button:hover {
+            background-color: #05a057; /* Slightly darker on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account</h1>
+        <p>Please select an option:</p>
+        <button class="button" onclick="window.location.href='ca.html'">User Account</button>
+        <button class="button" onclick="window.location.href='admin-error.html'">Admin Account</button>
+        <button class="button" onclick="window.location.href='deliveryRegistration.html'">Delivery Account</button>
+        <button class="button" onclick="window.location.href='index.html'">Go to Main Menu</button>
+    </div>
+</body>
+</html>
